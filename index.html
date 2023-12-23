@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Minha nota final - Senai</title>
+    <link rel="shortcut icon" href="/imgs/logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    
+    <div class="row justify-content-md-center">
+        <div class="col-12 col-md-8 col-lg-3">
+            <div class="container-fluid mt-5 p-5">
+                <!-- Título com imagem -->
+                <div class="text-center mb-4 mt-5">
+                    <img class="img-fluid" style="width: 100px;" src="/imgs/logo.png" alt="">
+                    <h2 class="mb-1 mt-3">Calculadora da nota final</h2>
+                </div>
+            
+                <hr>
+                
+                <!-- Formulário -->
+                <form>
+                    <!-- Campo 1 -->
+                    <div class="mb-3">
+                      <label for="porcentagemSaep" class="form-label">Porcentagem do SAEP</label>
+                      <input type="number" step="1" max="100" min="1" class="form-control" id="porcentagemSaep" aria-describedby="porcentagemSaepHelp">
+                      <div id="porcentagemSaepHelp" class="form-text">Sua porcentagem na prova do SAEP teorico.</div>
+                    </div>
+        
+                    <!-- Campo 2 -->
+                    <div class="mb-3">
+                      <label for="notaApresentacaoTcc" class="form-label">Nota apresentação TCC</label>
+                      <input type="number" step="0.1" max="10.0" min="0" class="form-control" id="notaApresentacaoTcc">
+                      <div id="emailHelp" class="form-text">A nota que foi divulgada no dia da apresentação do TCC.</div>
+                    </div>
+        
+                    <!-- Botão -->
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary w-75 mt-3" id="calcular">Calcular</button>
+                    </div>
+        
+                  </form>
+        
+                  <hr>
+        
+                  <!-- Resultado -->
+                  <div class="text-center mt-3">
+                    <h2>Sua nota final é: <span id="notaFinal">??</span></h2>
+                    <h1 class="small text-secondary" id="complemento">???</h1>
+                  </div>
+        
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let porcentagemSaep = document.getElementById('porcentagemSaep');
+        let notaApresentacaoTcc = document.getElementById('notaApresentacaoTcc');
+        let btnCalcular = document.getElementById('calcular');
+
+        let complemento = document.getElementById('complemento');
+        let notaFinal = document.getElementById('notaFinal');
+
+        btnCalcular.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            // Fórmula = ((Porcentagem do SAEP x 3)/100) + ((Nota TCC x 7)/10)
+
+            let complementoTexto = "";
+
+            let notaSaepFinal = (porcentagemSaep.value * 3) / 100;
+            let notaApresentacaoTccFinal = (notaApresentacaoTcc.value * 7) / 10;
+
+            let resultadoFinal = notaSaepFinal + notaApresentacaoTccFinal;
+
+            if (resultadoFinal < 7.0) complementoTexto = "Reprovado...";
+
+            else complementoTexto = "Aprovado!";
+
+            notaFinal.innerHTML = resultadoFinal.toFixed(2);
+            complemento.innerHTML = complementoTexto;
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
