@@ -14,8 +14,8 @@
             <div class="container-fluid mt-5 p-5">
                 <!-- Título com imagem -->
                 <div class="text-center mb-4 mt-5">
-                    <img class="img-fluid" style="width: 100px;" src="https://github.com/Dedo-Finger2/CalculadoraNotaFinalSenai2023/blob/main/imgs/logo.png?raw=true" alt="">
-                    <h2 class="mb-1 mt-3">Calculadora da nota final</h2>
+                    <img class="img-fluid rounded border border-2 border-primary shadow" style="width: 100px;" src="https://github.com/Dedo-Finger2/CalculadoraNotaFinalSenai2023/blob/main/imgs/logo.png?raw=true" alt="">
+                    <h2 class="mb-1 mt-4 fw-bold">Calculadora <span class="text-primary fw-bold">nota final</span></h2>
                 </div>
             
                 <hr>
@@ -25,7 +25,7 @@
                     <!-- Campo 1 -->
                     <div class="mb-3">
                       <label for="porcentagemSaep" class="form-label">Porcentagem do SAEP</label>
-                      <input type="number" step="1" max="100" min="1" class="form-control" id="porcentagemSaep" aria-describedby="porcentagemSaepHelp">
+                      <input type="number" step="0.1" max="100" min="1" class="form-control" id="porcentagemSaep" aria-describedby="porcentagemSaepHelp">
                       <div id="porcentagemSaepHelp" class="form-text">Sua porcentagem na prova do SAEP teorico.</div>
                     </div>
         
@@ -38,7 +38,7 @@
         
                     <!-- Botão -->
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary w-75 mt-3" id="calcular">Calcular</button>
+                        <button type="submit" class="btn btn-primary w-75 mt-3 shadow-sm" id="calcular">Calcular</button>
                     </div>
         
                   </form>
